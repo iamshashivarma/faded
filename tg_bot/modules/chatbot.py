@@ -1,4 +1,4 @@
-# AI module using Intellivoid's Coffeehouse API by @TheRealPhoenix
+# AI module using Intellivoid's Coffeehouse API by @dank_as_fuck
 from time import time, sleep
 
 from coffeehouse.lydia import LydiaAI
@@ -47,7 +47,7 @@ def remove_chat(bot: Bot, update: Update):
         
 def check_message(bot: Bot, message):
     reply_msg = message.reply_to_message
-    if message.text.lower() == "phoenix":
+    if message.text.lower() == "rin":
         return True
     if reply_msg:
         if reply_msg.from_user.id == bot.get_me().id:

@@ -1,4 +1,4 @@
-# Simple lyrics module using tswift by @TheRealPhoenix
+# Simple lyrics module using tswift by @dank_as_fuck
 
 from tswift import Song
 

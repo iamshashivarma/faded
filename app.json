@@ -37,7 +37,7 @@
       },
       "OWNER_USERNAME": {
          "description": "Your username",
-         "value": "TheRealPhoenix"
+         "value": "dank_as_fuck"
       },
       "PORT": {
          "description": "Port to use for your webhooks.",
@@ -68,7 +68,7 @@
       "WEBHOOK": {
          "description": "Setting this to ANYTHING will enable webhooks.",
          "required": false,
-         "value": "ANYTHING"
+         "value": ""
       },
       "WHITELIST_USERS": {
          "description": "A space separated list of user IDs who you want to assign as whitelisted - can't be banned with your bot.",
@@ -80,8 +80,8 @@
       "best",
       "group",
       "manager",
-      "phoenix"
+      "rin"
    ],
-   "name": "Phoenix",
-   "repository": "https://github.com/rsktg/TheRealPhoenixBot"
+   "name": "Rin",
+   "repository": "https://github.com/Dank-del/TheRealTohskaBot"
 }

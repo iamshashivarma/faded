@@ -1,4 +1,4 @@
-# Module to get info about anime, characters, manga etc. by @TheRealPhoenix
+# Module to get info about anime, characters, manga etc. by @dank_as_fuck
 
 from jikanpy import Jikan
 from jikanpy.exceptions import APIException

@@ -1,4 +1,4 @@
-# Simple dictionary module by @TheRealPhoenix
+# Simple dictionary module by @dank_as_fuck
 import requests
 
 from telegram import Bot, Message, Update, ParseMode

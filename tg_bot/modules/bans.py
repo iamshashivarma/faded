@@ -303,7 +303,7 @@ def banme(bot: Bot, update: Update):
         bot.kick_chat_member(chat_id, user_id)
         res = "Get outta here!"
     except:
-        res = "Huh... something went wrong. Report this @PhoenixSupport"
+        res = "Huh... something went wrong. Report this @tohsakas"
     update.effective_message.reply_text(res)
 
 
