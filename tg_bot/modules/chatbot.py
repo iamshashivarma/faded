@@ -1,4 +1,4 @@
-# AI module using Intellivoid's Coffeehouse API by @dank_as_fuck
+# AI module using Intellivoid's Coffeehouse API by @TheRealPhoenix
 from time import time, sleep
 
 from coffeehouse.lydia import LydiaAI

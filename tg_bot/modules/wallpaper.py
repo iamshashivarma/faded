@@ -1,4 +1,4 @@
-# Wallpapers module by @dank_as_fuck using wall.alphacoders.com
+# Wallpapers module by @TheRealPhoenix using wall.alphacoders.com
 
 import requests as r
 from random import randint

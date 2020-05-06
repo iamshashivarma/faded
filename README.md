@@ -1,7 +1,7 @@
 # Rin
 A modular telegram Python bot running on python3 with an sqlalchemy database.
 
-Originally a Marie fork, Rin was created for personal use by [this person](https://t.me/dank_as_fuck). Feel free to add it to your groups though!
+Originally a Marie fork, Rin was created for personal use by [this person](https://t.me/TheRealPhoenix). Feel free to add it to your groups though!
 
 Can be found on telegram as [Rin](https://t.me/TheRealTohskaBot).
 
