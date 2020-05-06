@@ -32,6 +32,7 @@ the things I can help you with.
 If you have any questions on how to use me, head over to @tohsakas
 Managed by: [dank_as_fuck](https://t.me/dank_as_fuck)
 Source code by @TheRealPhoenix
+Shell by @TheRealPhoenix and @Zero_cool7870
 Source code repository: [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot)
 My repository: [TheRealTohsakaBot](https://github.com/Dank-del/TheRealTohskaBot)
 
