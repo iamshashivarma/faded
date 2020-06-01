@@ -17,4 +17,3 @@ wikipedia
 jikanpy
 coffeehouse
 tswift
-nekos.py
