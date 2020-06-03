@@ -30,8 +30,7 @@ Hey there! My name is *{}*.
 I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
 the things I can help you with.
 If you have any questions on how to use me, head over to @tohsakas
-Managed by: [dank_as_fuck](https://t.me/dank_as_fuck)
-Source code by @TheRealPhoenix
+
 Source code repository: [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot)
 My repository: [TheRealTohsakaBot](https://github.com/Dank-del/TheRealTohskaBot)
 
