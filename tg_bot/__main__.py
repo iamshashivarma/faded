@@ -28,10 +28,9 @@ You can find the list of available commands with /help
 HELP_STRINGS = """
 Hey there! My name is *{}*.
 I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
-the things I can help you with.
+the things I can help you with[.](https://telegra.ph/file/158e93b0b48676d7efeaf.jpg)
 If you have any questions on how to use me, head over to @tohsakas
-Managed by: [dank_as_fuck](https://t.me/dank_as_fuck)
-Source code by @TheRealPhoenix
+
 Source code repository: [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot)
 My repository: [TheRealTohsakaBot](https://github.com/Dank-del/TheRealTohskaBot)
 
