@@ -374,7 +374,7 @@ you and your groups by removing spam flooders as quickly as possible. They can b
 
 Spam shield uses @Spamwatch API and Global bans to remove Spammers as much as possible from your chatroom!
 *What is SpamWatch?*
-SpamWatch maintains a large constantly updated ban-list of spambots, trolls, bitcoin spammers and unsavoury characters.
+[SpamWatch](https://telegra.ph/file/f584b643c6f4be0b1de53.jpg) maintains a large constantly updated ban-list of spambots, trolls, bitcoin spammers and unsavoury characters.
 Rin will constantly help banning spammers off from your group automatically So, you don't have to worry about spammers storming your group.
 """
 
