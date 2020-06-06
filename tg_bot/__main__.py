@@ -20,7 +20,11 @@ from tg_bot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
 Hi {}, my name is {}!
-To add me to your groups, [click here!](http://telegram.me/TheRealTohskaBot?startgroup=botstart)
+I'm a group management bot with a few fun extras ;)
+
+Source code repository: [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot)
+My repository: [TheRealTohsakaBot](https://github.com/Dank-del/TheRealTohskaBot)
+
 
 You can find the list of available commands with /help
 """
@@ -30,9 +34,6 @@ Hey there! My name is *{}*.
 I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
 the things I can help you with[.](https://telegra.ph/file/1e96aac17d63fb14535ae.mp4)
 If you have any questions on how to use me, head over to @tohsakas
-
-Source code repository: [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot)
-My repository: [TheRealTohsakaBot](https://github.com/Dank-del/TheRealTohskaBot)
 
 *Main* commands available:
  - /start: start the bot
@@ -46,6 +47,8 @@ My repository: [TheRealTohsakaBot](https://github.com/Dank-del/TheRealTohskaBot)
 {}
 And the following:
 """.format(dispatcher.bot.first_name, "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n")
+
+RIN_IMG = "https://telegra.ph/file/2dc1c31660b79b7e3ce90.jpg"
 
 DONATE_STRING = """{0} doesn't currently need any donations.
 However you can donate to the creator of the original source code which {0} \
@@ -142,9 +145,10 @@ def start(bot: Bot, update: Update, args: List[str]):
 
         else:
             first_name = update.effective_user.first_name
-            update.effective_message.reply_text(
+            update.effective_message.reply_photo(RIN_IMG,
                 PM_START_TEXT.format(escape_markdown(first_name), escape_markdown(bot.first_name), OWNER_ID),
-                parse_mode=ParseMode.MARKDOWN)
+                parse_mode=ParseMode.MARKDOWN, reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="Add Kigyō to your group",
+                                                                       url="t.me/{}?startgroup=true".format(bot.username))]]))
     else:
         update.effective_message.reply_text("Yo, why'd you summon me?")
 
