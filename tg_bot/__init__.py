@@ -1,6 +1,7 @@
 import logging
 import os
 import sys
+import spamwatch
 
 import telegram.ext as tg
 
@@ -66,6 +67,8 @@ if ENV:
     WALL_API = os.environ.get('WALL_API', "")
     MOE_API = os.environ.get('MOE_API', "")
     AI_API_KEY = os.environ.get('AI_API_KEY', "")
+    SPAMWATCH = os.environ.get('SPAMWATCH_API', None)
+
 
 else:
     from tg_bot.config import Development as Config
@@ -116,10 +119,18 @@ else:
     WALL_API = Config.WALL_API
     MOE_API = Config.MOE_API
     AI_API_KEY = Config.AI_API_KEY
-
+    SPAMWATCH = Config.SPAMWATCH_API
+    
 
 SUDO_USERS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
+
+# Pass if SpamWatch token not set.
+if SPAMWATCH == None:
+   spamwtc = None
+   LOGGER.warning("Invalid spamwatch api")
+else:
+   spamwtc = spamwatch.Client(SPAMWATCH)
 
 updater = tg.Updater(TOKEN, workers=WORKERS)
 
