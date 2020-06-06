@@ -9,7 +9,7 @@ from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 from telegram.utils.helpers import mention_html
 
 import tg_bot.modules.sql.global_bans_sql as sql
-from tg_bot import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, STRICT_GBAN
+from tg_bot import dispatcher, OWNER_ID, SUDO_USERS, SUPPORT_USERS, STRICT_GBAN, spamwtc
 from tg_bot.modules.helper_funcs.chat_status import user_admin, is_user_admin
 from tg_bot.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 from tg_bot.modules.helper_funcs.filters import CustomFilters
@@ -223,10 +223,31 @@ def gbanlist(bot: Bot, update: Update):
 
 
 def check_and_ban(update, user_id, should_message=True):
+
+    try:
+       spmban = spamwtc.get_ban(int(user_id))
+       if spmban:
+           update.effective_chat.kick_member(user_id)
+           if should_message:
+              update.effective_message.reply_text(
+              f"This person has been detected as spambot by @SpamWatch and has been removed!\nReason: <code>{spmban.reason}</code>",
+              parse_mode=ParseMode.HTML)
+              return
+           else:
+              return
+    except:
+        pass
+
     if sql.is_user_gbanned(user_id):
         update.effective_chat.kick_member(user_id)
         if should_message:
-            update.effective_message.reply_text("This is a bad person, they shouldn't be here!")
+            usr = sql.get_gbanned_user(user_id)
+            greason = usr.reason
+            if not greason:
+                greason = "No reason given"
+
+            update.effective_message.reply_text(f"*Alert! this user was GBanned and have been removed!*\n*Reason*: {greason}", parse_mode=ParseMode.MARKDOWN)
+            return
 
 
 @run_async
@@ -344,10 +365,16 @@ def __chat_settings__(chat_id, user_id):
 __help__ = """
 *Admin only:*
  - /antispam <on/off/yes/no>: Check and/or change anti-spam settings.
+ - /spamshield <on/off/yes/no>: Will disable or enable the effect of Spam protection in your group.
 
 Gbans, also known as global bans, are used by the bot owners to ban spammers across all groups. This helps protect \
 you and your groups by removing spam flooders as quickly as possible. They can be disabled for your group by calling \
 /antispam off.
+
+Spam shield uses @Spamwatch API and Global bans to remove Spammers as much as possible from your chatroom!
+*What is SpamWatch?*
+SpamWatch maintains a large constantly updated ban-list of spambots, trolls, bitcoin spammers and unsavoury characters.
+Rin will constantly help banning spammers off from your group automatically So, you don't have to worry about spammers storming your group.
 """
 
 __mod_name__ = "Anti-Spam"
@@ -362,6 +389,7 @@ CHECK_GBAN_HANDLER = CommandHandler("checkgb", check_gbans, filters=Filters.user
 CLEAN_GBAN_HANDLER = CommandHandler("cleangb", clear_gbans, filters=Filters.user(OWNER_ID))
 
 GBAN_STATUS = CommandHandler("antispam", gbanstat, pass_args=True, filters=Filters.group)
+GBAN_STATUS = CommandHandler("spamshield", gbanstat, pass_args=True, filters=Filters.group)
 
 GBAN_ENFORCER = MessageHandler(Filters.all & Filters.group, enforce_gban)
 
