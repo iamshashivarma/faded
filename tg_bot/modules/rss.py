@@ -215,9 +215,6 @@ def rss_set(bot, job):
             pass
 
 
-
-__mod_name__ = "RSS Feed"
-
 job = updater.job_queue
 
 job_rss_set = job.run_once(rss_set, 5)
