@@ -468,7 +468,7 @@ def remove_keyboard(bot: Bot, update: Update):
 
 
 # /ip is for private use
-__help__ = """"
+__help__ = """
  - `/ping`: pings the bot.
  - `/id`: get the current group id. If used by replying to a message, gets that user's id.
  - `/runs`: reply a random string from an array of replies.
@@ -505,7 +505,7 @@ Ever stumbled upon a word that you didn't know of and wanted to look it up?
 With this module, you can find the definitions of words without having to leave the app!
 *Available commands:*
  - `/define <word>`: returns the definition of the word.
-""""
+"""
 
 __mod_name__ = "Misc"
 
