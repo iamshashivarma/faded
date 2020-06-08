@@ -35,9 +35,7 @@ def lyrics(bot: Bot, update: Update, args):
         else:
             msg.reply_text(reply)
                 
-        
-
-__mod_name__ = "Lyrics"
+       
 
 
 
