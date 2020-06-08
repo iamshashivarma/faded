@@ -130,6 +130,17 @@ def __user_settings__(user_id):
     return "You receive reports from chats you're admin in: `{}`.\nToggle this with /reports in PM.".format(
         sql.user_should_report(user_id))
 
+__mod_name__ = "Reporting"
+
+__help__ = """
+ - /report <reason>: reply to a message to report it to admins.
+ - @admin: reply to a message to report it to admins.
+NOTE: Neither of these will get triggered if used by admins.
+*Admin only:*
+ - /reports <on/off>: change report setting, or view current status.
+   - If done in pm, toggles your status.
+   - If in chat, toggles that chat's status.
+"""
 
 
 
