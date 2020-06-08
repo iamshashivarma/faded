@@ -76,8 +76,6 @@ def last_fm(bot: Bot, update: Update):
         
     msg.reply_text(rep, parse_mode=ParseMode.HTML)
     
-
-__mod_name__ = "Last.FM"
     
 
 SET_USER_HANDLER = CommandHandler("setuser", set_user, pass_args=True)
