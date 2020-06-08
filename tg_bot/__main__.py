@@ -22,6 +22,8 @@ PM_START_TEXT = """
 Hi {}, my name is {}!
 I'm a group management bot with a few fun extras ;)
 
+The support chat is at @tohsakas
+
 Source code repository: [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot)
 My repository: [TheRealTohsakaBot](https://github.com/Dank-del/TheRealTohskaBot)
 
@@ -31,9 +33,7 @@ You can find the list of available commands with /help
 
 HELP_STRINGS = """
 Hey there! My name is *{}*.
-I'm a modular group management bot with a few fun extras! Have a look at the following for an idea of some of \
-the things I can help you with[.](https://telegra.ph/file/1e96aac17d63fb14535ae.mp4)
-If you have any questions on how to use me, head over to @tohsakas
+I'm a modular group management bot with a few fun extras!
 
 *Main* commands available:
  - /start: start the bot
