@@ -131,8 +131,6 @@ def __user_settings__(user_id):
         sql.user_should_report(user_id))
 
 
-__mod_name__ = "Reporting"
-
 
 
 REPORT_HANDLER = CommandHandler("report", report, filters=Filters.group)
