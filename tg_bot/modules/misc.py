@@ -475,7 +475,6 @@ __help__ = """
  - /slap: slap a user, or get slapped if not a reply.
  - /info: get information about a user.
  - /gdpr: deletes your information from the bot's database. Private chats only.
-
  - /markdownhelp: quick summary of how markdown works in telegram - can only be called in private chats.
 
 *#RSS*
@@ -514,17 +513,6 @@ With this module, you can find the definitions of words without having to leave 
 *Available commands:*
  - /define <word>: returns the definition of the word.
 
-*#LOCKS*
- - /locktypes: a list of possible locktypes
-*Admin only:*
- - /lock <type>: lock items of a certain type (not available in private)
- - /unlock <type>: unlock items of a certain type (not available in private)
- - /locks: the current list of locks in this chat.
-Locks can be used to restrict a group's users.
-eg:
-Locking urls will auto-delete all messages with urls, locking stickers will delete all \
-stickers, etc.
-Locking bots will stop non-admins from adding bots to the chat
 """
 
 __mod_name__ = "Misc"
