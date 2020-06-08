@@ -479,7 +479,6 @@ __help__ = """
  - /markdownhelp: quick summary of how markdown works in telegram - can only be called in private chats.
 
 *#RSS*
-
  - /addrss <link>: add an RSS link to the subscriptions.
  - /removerss <link>: removes the RSS link from the subscriptions.
  - /rss <link>: shows the link's data and the last entry, for testing purposes.
@@ -487,7 +486,6 @@ __help__ = """
 NOTE: In groups, only admins can add/remove RSS links to the group's subscription
 
 *#REPORTING*
-
  - /report <reason>: reply to a message to report it to admins.
  - @admin: reply to a message to report it to admins.
 NOTE: Neither of these will get triggered if used by admins.
@@ -497,12 +495,10 @@ NOTE: Neither of these will get triggered if used by admins.
    - If done in pm, toggles your status.
    - If in chat, toggles that chat's status.
 
-
 *#STICKERS*
 - /stickerid: reply to a sticker to get its ID.
 - /getsticker: reply to a sticker to get the raw PNG image.
 - /steal: reply to a sticker or image to add it to your pack.
-
 
 *#Last.FM*
 Share what you're what listening to with the help of this module!
@@ -518,8 +514,6 @@ With this module, you can find the definitions of words without having to leave 
 *Available commands:*
  - /define <word>: returns the definition of the word.
 
-
-
 *#LOCKS*
  - /locktypes: a list of possible locktypes
 *Admin only:*
@@ -531,8 +525,6 @@ eg:
 Locking urls will auto-delete all messages with urls, locking stickers will delete all \
 stickers, etc.
 Locking bots will stop non-admins from adding bots to the chat
-
-
 """
 
 __mod_name__ = "Misc"
