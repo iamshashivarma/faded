@@ -66,7 +66,6 @@ def export_data(bot: Bot, update: Update):
     msg.reply_text("")
 
 
-__mod_name__ = "Backups"
 
 IMPORT_HANDLER = CommandHandler("import", import_data)
 EXPORT_HANDLER = CommandHandler("export", export_data)
