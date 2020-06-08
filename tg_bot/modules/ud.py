@@ -29,8 +29,6 @@ def ud(bot: Bot, update: Update):
     else:
         update.message.reply_text("No results found!")
 
-__mod_name__ = "Urban Dictionary"
-  
 ud_handle = DisableAbleCommandHandler("ud", ud)
 
 dispatcher.add_handler(ud_handle)
