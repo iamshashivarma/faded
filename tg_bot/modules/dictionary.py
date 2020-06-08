@@ -29,9 +29,7 @@ def define(bot: Bot, update: Update, args):
         
         
 
- 
-__mod_name__ = "Dictionary"
-        
+
         
 DEFINE_HANDLER = CommandHandler("define", define, pass_args=True)
 
