@@ -153,10 +153,6 @@ def totranslate(bot: Bot, update: Update):
 		return
 
 
-__help__ = """- /tl <language code> as the reply to a message or preceding the text you want to translate.
-"""
-__mod_name__ = "Translation"
-
 TOTRANSLATE_HANDLER = DisableAbleCommandHandler("tl", totranslate)
 
 dispatcher.add_handler(TOTRANSLATE_HANDLER)

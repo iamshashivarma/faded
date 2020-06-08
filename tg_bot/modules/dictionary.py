@@ -28,16 +28,8 @@ def define(bot: Bot, update: Update, args):
         msg.reply_text("No results found!")
         
         
-__help__ = """
-Ever stumbled upon a word that you didn't know of and wanted to look it up?
-With this module, you can find the definitions of words without having to leave the app!
 
-*Available commands:*
- - /define <word>: returns the definition of the word.
- """
- 
-__mod_name__ = "Dictionary"
-        
+
         
 DEFINE_HANDLER = CommandHandler("define", define, pass_args=True)
 

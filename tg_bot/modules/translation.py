@@ -47,13 +47,6 @@ def translate(bot: Bot, update: Update):
         update.effective_message.reply_text(curr_string)
 
 
-__help__ = """
- - Replying /t to a message will produce the grammar corrected version of it.
-"""
-
-__mod_name__ = "Grammar Correction"
-
-
 TRANSLATE_HANDLER = CommandHandler('t', translate)
 
 dispatcher.add_handler(TRANSLATE_HANDLER)

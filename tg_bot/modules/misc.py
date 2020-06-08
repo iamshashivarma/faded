@@ -469,14 +469,53 @@ def remove_keyboard(bot: Bot, update: Update):
 
 # /ip is for private use
 __help__ = """
- - /ping: pings the bot.
+
+ - /pin: pings the bot.
  - /id: get the current group id. If used by replying to a message, gets that user's id.
  - /runs: reply a random string from an array of replies.
  - /slap: slap a user, or get slapped if not a reply.
  - /info: get information about a user.
  - /gdpr: deletes your information from the bot's database. Private chats only.
-
  - /markdownhelp: quick summary of how markdown works in telegram - can only be called in private chats.
+ 
+ 
+*#RSS*
+ - /addrss <link>: add an RSS link to the subscriptions.
+ - /removerss <link>: removes the RSS link from the subscriptions.
+ - /rss <link>: shows the link's data and the last entry, for testing purposes.
+ - /listrss: shows the list of rss feeds that the chat is currently subscribed to.
+NOTE: In groups, only admins can add/remove RSS links to the group's subscription
+
+
+*#REPORTING*
+ - /report <reason>: reply to a message to report it to admins.
+ - @admin: reply to a message to report it to admins.
+NOTE: Neither of these will get triggered if used by admins.
+*Admin only:*
+ - /reports <on/off>: change report setting, or view current status.
+   - If done in pm, toggles your status.
+   - If in chat, toggles that chat's status.
+      
+*#STICKERS*
+- /stickerid: reply to a sticker to get its ID.
+- /getsticker: reply to a sticker to get the raw PNG image.
+- /steal: reply to a sticker or image to add it to your pack.
+
+
+*#Last.FM*
+Share what you're what listening to with the help of this module!
+*Available commands:*
+ - /setuser <username>: sets your last.fm username.
+ - /clearuser: removes your last.fm username from the bot's database.
+ - /lastfm: returns what you're scrobbling on last.fm.
+ 
+*#DICTIONARY*
+Ever stumbled upon a word that you didn't know of and wanted to look it up?
+With this module, you can find the definitions of words without having to leave the app!
+*Available commands:*
+ - /define <word>: returns the definition of the word.
+ 
+ 
 """
 
 __mod_name__ = "Misc"

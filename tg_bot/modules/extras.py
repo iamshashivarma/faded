@@ -295,6 +295,7 @@ def weebify(bot: Bot, update: Update, args):
 
 
 __help__ = """
+*#EXTRAS*
  - /shg or /shrug: pretty self-explanatory.
  - /hug: give a hug and spread the love :)
  - /pat: give a headpat :3
@@ -304,8 +305,49 @@ __help__ = """
  - /wiki <term>: do a search on Wikipedia.
  - /judge: as a reply to someone, checks if they're lying or not!
  - /weebify: as a reply to a message, "weebifies" the message.
-"""
+ - Replying /t to a message will produce the grammar corrected version of it.
+ - /tl <language code> as the reply to a message or preceding the text you want to translate.
+ - /ud <expression> :- Returns the top definition of the word or expression on Urban Dictionary.
+ - /lyrics <song>: returns the lyrics of that song.
+ You can either enter just the song name or both the artist and song name.
 
+ *#NOTES*
+
+  - /get <notename>: get the note with this notename
+ - #<notename>: same as /get
+ - /notes or /saved: list all saved notes in this chat
+
+If you would like to retrieve the contents of a note without any formatting, use `/get <notename> noformat`. This can \
+be useful when updating a current note.
+
+*Admin only:*
+ - /save <notename> <notedata>: saves notedata as a note with name notename
+A button can be added to a note by using standard markdown link syntax - the link should just be prepended with a \
+`buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check /markdownhelp for more info.
+ - /save <notename>: save the replied message as a note with name notename
+ - /clear <notename>: clear note with this name
+
+
+*#MyAnimeList*
+
+Get information about anime, manga or characters with the help of this module! All data is fetched from [MyAnimeList](https://myanimelist.net).
+*Available commands:*
+ - /sanime <anime>: returns information about the anime.
+ - /scharacter <character>: returns information about the character.
+ - /smanga <manga>: returns information about the manga.
+ - /upcoming: returns a list of new anime in the upcoming seasons.
+ 
+*#BACKUPS*
+
+*Admin only:*
+ - /import: reply to a group butler backup file to import as much as possible, making the transfer super simple! Note \
+that files/photos can't be imported due to telegram restrictions.
+ - /export: !!! This isn't a command yet, but should be coming soon!
+
+
+
+
+"""
 __mod_name__ = "Extras"
 
 
