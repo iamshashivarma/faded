@@ -228,8 +228,6 @@ def __chat_settings__(chat_id, user_id):
 
 
 
-__mod_name__ = "Notes"
-
 GET_HANDLER = CommandHandler("get", cmd_get, pass_args=True)
 HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get)
 
