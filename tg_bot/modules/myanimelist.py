@@ -180,7 +180,6 @@ def manga(bot: Bot, update: Update, args):
         msg.reply_text(rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb))
         
 
-__mod_name__ = "MyAnimeList"
         
         
 ANIME_HANDLER = CommandHandler("sanime", anime, pass_args=True)
