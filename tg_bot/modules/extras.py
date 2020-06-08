@@ -295,6 +295,7 @@ def weebify(bot: Bot, update: Update, args):
 
 
 __help__ = """
+*#EXTRAS*
  - /shg or /shrug: pretty self-explanatory.
  - /hug: give a hug and spread the love :)
  - /pat: give a headpat :3
@@ -304,7 +305,99 @@ __help__ = """
  - /wiki <term>: do a search on Wikipedia.
  - /judge: as a reply to someone, checks if they're lying or not!
  - /weebify: as a reply to a message, "weebifies" the message.
-"""
+ - Replying /t to a message will produce the grammar corrected version of it.
+ - /tl <language code> as the reply to a message or preceding the text you want to translate.
+ - /ud <expression> :- Returns the top definition of the word or expression on Urban Dictionary.
+ - /lyrics <song>: returns the lyrics of that song.
+ You can either enter just the song name or both the artist and song name.
+
+ *#NOTES*
+
+  - /get <notename>: get the note with this notename
+ - #<notename>: same as /get
+ - /notes or /saved: list all saved notes in this chat
+
+If you would like to retrieve the contents of a note without any formatting, use `/get <notename> noformat`. This can \
+be useful when updating a current note.
+
+*Admin only:*
+ - /save <notename> <notedata>: saves notedata as a note with name notename
+A button can be added to a note by using standard markdown link syntax - the link should just be prepended with a \
+`buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check /markdownhelp for more info.
+ - /save <notename>: save the replied message as a note with name notename
+ - /clear <notename>: clear note with this name
+
+
+*#MyAnimeList*
+
+Get information about anime, manga or characters with the help of this module! All data is fetched from [MyAnimeList](https://myanimelist.net).
+*Available commands:*
+ - /sanime <anime>: returns information about the anime.
+ - /scharacter <character>: returns information about the character.
+ - /smanga <manga>: returns information about the manga.
+ - /upcoming: returns a list of new anime in the upcoming seasons.
+ 
+*#BACKUPS*
+
+*Admin only:*
+ - /import: reply to a group butler backup file to import as much as possible, making the transfer super simple! Note \
+that files/photos can't be imported due to telegram restrictions.
+ - /export: !!! This isn't a command yet, but should be coming soon!
+
+
+*#RSS*
+
+ - /addrss <link>: add an RSS link to the subscriptions.
+ - /removerss <link>: removes the RSS link from the subscriptions.
+ - /rss <link>: shows the link's data and the last entry, for testing purposes.
+ - /listrss: shows the list of rss feeds that the chat is currently subscribed to.
+NOTE: In groups, only admins can add/remove RSS links to the group's subscription
+
+*#REPORTING*
+
+ - /report <reason>: reply to a message to report it to admins.
+ - @admin: reply to a message to report it to admins.
+NOTE: Neither of these will get triggered if used by admins.
+
+*Admin only:*
+ - /reports <on/off>: change report setting, or view current status.
+   - If done in pm, toggles your status.
+   - If in chat, toggles that chat's status.
+
+
+*#STICKERS*
+- /stickerid: reply to a sticker to get its ID.
+- /getsticker: reply to a sticker to get the raw PNG image.
+- /steal: reply to a sticker or image to add it to your pack.
+
+
+*#Last.FM*
+Share what you're what listening to with the help of this module!
+*Available commands:*
+ - /setuser <username>: sets your last.fm username.
+ - /clearuser: removes your last.fm username from the bot's database.
+ - /lastfm: returns what you're scrobbling on last.fm.
+
+*#DICTIONARY
+Ever stumbled upon a word that you didn't know of and wanted to look it up?
+With this module, you can find the definitions of words without having to leave the app!
+
+*Available commands:*
+ - /define <word>: returns the definition of the word.
+
+
+
+*#LOCKS*
+ - /locktypes: a list of possible locktypes
+*Admin only:*
+ - /lock <type>: lock items of a certain type (not available in private)
+ - /unlock <type>: unlock items of a certain type (not available in private)
+ - /locks: the current list of locks in this chat.
+Locks can be used to restrict a group's users.
+eg:
+Locking urls will auto-delete all messages with urls, locking stickers will delete all \
+stickers, etc.
+Locking bots will stop non-admins from adding bots to the chat
 
 __mod_name__ = "Extras"
 
