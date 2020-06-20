@@ -295,7 +295,7 @@ def weebify(bot: Bot, update: Update, args):
 
 
 __help__ = """
-*#EXTRAS*
+*EXTRAS*
  - /shg or /shrug: pretty self-explanatory.
  - /hug: give a hug and spread the love :)
  - /pat: give a headpat :3
@@ -310,8 +310,8 @@ __help__ = """
  - /ud <expression> :- Returns the top definition of the word or expression on Urban Dictionary.
  - /lyrics <song>: returns the lyrics of that song.
  You can either enter just the song name or both the artist and song name.
-
- *#NOTES*
+──────────────────────────────────────
+*NOTES*
 
   - /get <notename>: get the note with this notename
  - #<notename>: same as /get
@@ -326,9 +326,8 @@ A button can be added to a note by using standard markdown link syntax - the lin
 `buttonurl:` section, as such: `[somelink](buttonurl:example.com)`. Check /markdownhelp for more info.
  - /save <notename>: save the replied message as a note with name notename
  - /clear <notename>: clear note with this name
-
-
-*#MyAnimeList*
+──────────────────────────────────────
+*MyAnimeList*
 
 Get information about anime, manga or characters with the help of this module! All data is fetched from [MyAnimeList](https://myanimelist.net).
 *Available commands:*
@@ -336,17 +335,14 @@ Get information about anime, manga or characters with the help of this module! A
  - /scharacter <character>: returns information about the character.
  - /smanga <manga>: returns information about the manga.
  - /upcoming: returns a list of new anime in the upcoming seasons.
- 
-*#BACKUPS*
+────────────────────────────────────── 
+*BACKUPS*
 
 *Admin only:*
  - /import: reply to a group butler backup file to import as much as possible, making the transfer super simple! Note \
 that files/photos can't be imported due to telegram restrictions.
  - /export: !!! This isn't a command yet, but should be coming soon!
-
-
-
-
+──────────────────────────────────────
 """
 __mod_name__ = "Extras"
 
