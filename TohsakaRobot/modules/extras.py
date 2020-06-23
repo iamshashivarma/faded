@@ -267,7 +267,7 @@ def judge(bot: Bot, update: Update):
     else:
         user = msg.from_user.first_name
     res = random.choice(judger)
-    reply = msg.reply_text(f"{user} {res}", parse_mode=ParseMode.HTML)
+    msg.reply_text(f"{user} {res}", parse_mode=ParseMode.HTML)
 
 
 @run_async
