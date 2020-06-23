@@ -1,5 +1,4 @@
 import random
-import re
 import json
 import urllib.request
 import urllib.parse
@@ -7,7 +6,7 @@ import wikipedia
 from wikipedia.exceptions import DisambiguationError, PageError
 
 
-from telegram import Message, Chat, Update, Bot, ParseMode
+from telegram import Update, Bot, ParseMode
 from telegram.ext import run_async
 
 from TohsakaRobot import dispatcher
