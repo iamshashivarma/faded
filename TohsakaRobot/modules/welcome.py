@@ -11,7 +11,7 @@ from telegram.utils.helpers import mention_html
 
 import TohsakaRobot.modules.sql.welcome_sql as sql
 from TohsakaRobot import dispatcher, OWNER_ID, LOGGER, SUDO_USERS, SUPPORT_USERS
-from TohsakaRobot.modules.helper_funcs.chat_status import user_admin, can_delete, is_user_ban_protected
+from TohsakaRobot.modules.helper_funcs.chat_status import user_admin, is_user_ban_protected
 from TohsakaRobot.modules.helper_funcs.misc import build_keyboard, revert_buttons
 from TohsakaRobot.modules.helper_funcs.msg_types import get_welcome_type
 from TohsakaRobot.modules.helper_funcs.string_handling import markdown_parser, \
@@ -180,7 +180,7 @@ def new_member(bot: Bot, update: Update):
         if prev_welc:
             try:
                 bot.delete_message(chat.id, prev_welc)
-            except BadRequest as excp:
+            except BadRequest:
                 pass
 
             if sent:
@@ -567,7 +567,7 @@ def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
 
 
-def __chat_settings__(chat_id, user_id):
+def __chat_settings__(chat_id, _user_id):
     welcome_pref, _, _ = sql.get_welc_pref(chat_id)
     goodbye_pref, _, _ = sql.get_gdbye_pref(chat_id)
     return "This chat has it's welcome preference set to `{}`.\n" \

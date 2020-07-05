@@ -1,7 +1,7 @@
 # Simple dictionary module by @TheRealPhoenix
 import requests
 
-from telegram import Bot, Message, Update, ParseMode
+from telegram import Bot, Update, ParseMode
 from telegram.ext import CommandHandler, run_async
 
 from TohsakaRobot import dispatcher

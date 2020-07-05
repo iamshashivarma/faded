@@ -2,7 +2,7 @@ import os
 from time import sleep
 from typing import List
 
-from telegram import Update, Message, Bot
+from telegram import Update, Bot
 from telegram.error import BadRequest, Unauthorized, RetryAfter
 from telegram.ext import CommandHandler, Filters
 from telegram.ext.dispatcher import run_async

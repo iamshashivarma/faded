@@ -3,13 +3,11 @@ import nekos
 from PIL import Image
 import os
 
-from telegram import Message, Chat, Update, Bot, MessageEntity
-from telegram import ParseMode
-from telegram.ext import CommandHandler, run_async
+from telegram import Update, Bot
+from telegram.ext import run_async
 
-from TohsakaRobot import dispatcher, updater
+from TohsakaRobot import dispatcher
 from TohsakaRobot.modules.disable import DisableAbleCommandHandler
-from TohsakaRobot.modules.helper_funcs.chat_status import is_user_in_chat
 
 @run_async
 def neko(bot: Bot, update: Update):
