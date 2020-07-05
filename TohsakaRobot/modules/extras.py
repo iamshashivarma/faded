@@ -326,14 +326,16 @@ A button can be added to a note by using standard markdown link syntax - the lin
  - /save <notename>: save the replied message as a note with name notename
  - /clear <notename>: clear note with this name
 ──────────────────────────────────────
-*MyAnimeList*
-
-Get information about anime, manga or characters with the help of this module! All data is fetched from [MyAnimeList](https://myanimelist.net).
+*#MyAnimeList*
+Get information about anime, manga or characters from [MyAnimeList](https://myanimelist.net).
 *Available commands:*
- - /sanime <anime>: returns information about the anime.
- - /scharacter <character>: returns information about the character.
- - /smanga <manga>: returns information about the manga.
- - /upcoming: returns a list of new anime in the upcoming seasons.
+ • `/anime <anime>`*:* returns information about the anime.
+ • `/character <character>`*:* returns information about the character.
+ • `/manga <manga>`*:* returns information about the manga.
+ • `/user <user>`*:* returns information about a MyAnimeList user.
+ • `/upcoming`*:* returns a list of new anime in the upcoming seasons.
+ • `/kaizoku <anime>`*:* search an anime on animekaizoku.com
+ • `/kayo <anime>`*:* search an anime on animekayo.com
 ────────────────────────────────────── 
 *BACKUPS*
 
