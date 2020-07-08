@@ -184,7 +184,7 @@ def rss_update(bot, _job):
                              .format(len(new_entry_links) - 5))
 
 
-def rss_set(_bot, _job):
+def rss_set(bot, _job):
     user_data = sql.get_all()
 
     # this loop checks for every row in the DB

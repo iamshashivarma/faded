@@ -15,7 +15,7 @@ from TohsakaRobot.modules.helper_funcs.filters import CustomFilters
 USERS_GROUP = 4
 
 
-def get_user_id(username):
+def getuser_id(username):
     # ensure valid userid
     if len(username) <= 5:
         return None

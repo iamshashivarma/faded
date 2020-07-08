@@ -402,9 +402,9 @@ def button(bot, update):
     message = query.message
     data = query.data.split(", ")
     query_type = data[0]
-    original_user_id = int(data[1])
+    originaluser_id = int(data[1])
 
-    user_and_admin_list = [original_user_id, OWNER_ID] + SUDO_USERS
+    user_and_admin_list = [originaluser_id, OWNER_ID] + SUDO_USERS
 
     bot.answer_callback_query(query.id)
     if query_type == "anime_close":
@@ -414,10 +414,10 @@ def button(bot, update):
             query.answer("You are not allowed to use this.")
     elif query_type == "anime_anime" or query_type == "anime_manga":
         mal_id = data[2]
-        if query.from_user.id == original_user_id:
+        if query.from_user.id == originaluser_id:
             message.delete()
             progress_message = bot.sendMessage(message.chat.id, "Searching.... ")
-            caption, buttons, image = get_anime_manga(mal_id, query_type, original_user_id)
+            caption, buttons, image = get_anime_manga(mal_id, query_type, originaluser_id)
             bot.sendPhoto(message.chat.id, photo=image, caption=caption, parse_mode=ParseMode.HTML,
                           reply_markup=InlineKeyboardMarkup(buttons), disable_web_page_preview=False)
             progress_message.delete()

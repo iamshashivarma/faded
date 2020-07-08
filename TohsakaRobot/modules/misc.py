@@ -358,7 +358,7 @@ def shell(command):
     stdout,stderr = process.communicate()
     return (stdout,stderr)
 
-def ram(_bot: Bot, update: Update):
+def ram(bot: Bot, update: Update):
     cmd = "ps -o pid"
     output = shell(cmd)[0].decode()
     processes = output.splitlines()

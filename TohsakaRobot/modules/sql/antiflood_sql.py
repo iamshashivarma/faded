@@ -47,12 +47,12 @@ def set_flood(chat_id, amount):
 
 def update_flood(chat_id: str, user_id) -> bool:
     if str(chat_id) in CHAT_FLOOD:
-        curr_user_id, count, limit = CHAT_FLOOD.get(str(chat_id), DEF_OBJ)
+        curruser_id, count, limit = CHAT_FLOOD.get(str(chat_id), DEF_OBJ)
 
         if limit == 0:  # no antiflood
             return False
 
-        if user_id != curr_user_id or user_id is None:  # other user
+        if user_id != curruser_id or user_id is None:  # other user
             CHAT_FLOOD[str(chat_id)] = (user_id, DEF_COUNT + 1, limit)
             return False
 
