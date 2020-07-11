@@ -7,7 +7,7 @@ from telegram.ext import Filters, MessageHandler, run_async
 from TohsakaRobot import dispatcher
 from TohsakaRobot.modules.disable import DisableAbleCommandHandler, DisableAbleRegexHandler
 from TohsakaRobot.modules.sql import afk_sql as sql
-from TohsakaRobot.modules.users import getuser_id
+from TohsakaRobot.modules.users import get_user_id
 
 AFK_GROUP = 7
 AFK_REPLY_GROUP = 8
@@ -48,7 +48,7 @@ def reply_afk(bot: Bot, update: Update):
                 fst_name = ent.user.first_name
 
             elif ent.type == MessageEntity.MENTION:
-                user_id = getuser_id(message.text[ent.offset:ent.offset + ent.length])
+                user_id = get_user_id(message.text[ent.offset:ent.offset + ent.length])
                 if not user_id:
                     # Should never happen, since for a user to become AFK they must have spoken. Maybe changed username?
                     return

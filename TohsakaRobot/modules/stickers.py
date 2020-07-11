@@ -1,13 +1,16 @@
+import hashlib
 import os
 import math
 import urllib.request as urllib
+
+from io import BytesIO
 from PIL import Image
 
 from typing import Optional, List
 from telegram import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from telegram import TelegramError
 from telegram import Update, Bot
-from telegram.ext import run_async
+from telegram.ext import CommandHandler, run_async
 from telegram.utils.helpers import escape_markdown
 
 from TohsakaRobot import dispatcher
