@@ -2,6 +2,7 @@ import html
 from typing import Optional, List
 
 from telegram import Message, Chat, Update, Bot, User, ParseMode
+from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CommandHandler, RegexHandler, run_async, Filters
 from telegram.utils.helpers import mention_html
@@ -109,7 +110,7 @@ def report(bot: Bot, update: Update) -> str:
 
                 except Unauthorized:
                     pass
-                except BadRequest:  # TODO: cleanup exceptions
+                except BadRequest as excp:  # TODO: cleanup exceptions
                     LOGGER.exception("Exception while reporting user")
         return msg
 
@@ -120,7 +121,7 @@ def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
 
 
-def __chat_settings__(chat_id, _user_id):
+def __chat_settings__(chat_id, user_id):
     return "This chat is setup to send user reports to admins, via /report and @admin: `{}`".format(
         sql.chat_should_report(chat_id))
 

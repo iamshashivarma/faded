@@ -1,5 +1,6 @@
 import html
 import time
+import spamwatch
 from io import BytesIO
 from typing import Optional, List
 
@@ -358,7 +359,7 @@ def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
 
 
-def __chat_settings__(chat_id, _user_id):
+def __chat_settings__(chat_id, user_id):
     return "This chat is enforcing *gbans*: `{}`.".format(sql.does_chat_gban(chat_id))
 
 

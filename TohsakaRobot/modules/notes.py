@@ -5,7 +5,7 @@ from typing import Optional, List
 from telegram import MAX_MESSAGE_LENGTH, ParseMode, InlineKeyboardMarkup
 from telegram import Message, Update, Bot
 from telegram.error import BadRequest
-from telegram.ext import CommandHandler, MessageHandler, Filters
+from telegram.ext import CommandHandler, RegexHandler
 from telegram.ext.dispatcher import run_async
 from telegram.utils.helpers import escape_markdown
 
@@ -100,13 +100,13 @@ def get(bot, update, notename, show_none=True, no_format=False):
                                        "the meantime, I'll remove it from your notes list.")
                     sql.rm_note(chat_id, notename)
                 else:
-                    message.reply_text("This note could not be sent, as it is incorrectly formatted.")
-                                       
+                    message.reply_text("This note could not be sent, as it is incorrectly formatted. Ask in "
+                                       "@MarieSupport if you can't figure out why!")
                     LOGGER.exception("Could not parse message #%s in chat %s", notename, str(chat_id))
                     LOGGER.warning("Message was: %s", str(note.value))
         return
     elif show_none:
-        message.reply_text("This note doesn't exist.")
+        message.reply_text("This note doesn't exist")
 
 
 @run_async
@@ -138,7 +138,9 @@ def save(bot: Bot, update: Update):
     if data_type is None:
         msg.reply_text("Dude, there's no note")
         return
-
+    
+    if len(text.strip()) == 0:
+        text = note_name
         
     sql.add_note_to_db(chat_id, note_name, text, data_type, buttons=buttons, file=content)
 
@@ -179,7 +181,7 @@ def list_notes(bot: Bot, update: Update):
 
     msg = "*Notes in chat:*\n"
     for note in note_list:
-        note_name = " - `{}`\n".format(escape_markdown(note.name))
+        note_name = escape_markdown(" - {}\n".format(note.name))
         if len(msg) + len(note_name) > MAX_MESSAGE_LENGTH:
             update.effective_message.reply_text(msg, parse_mode=ParseMode.MARKDOWN)
             msg = ""
@@ -222,14 +224,12 @@ def __migrate__(old_chat_id, new_chat_id):
     sql.migrate_chat(old_chat_id, new_chat_id)
 
 
-def __chat_settings__(chat_id, _user_id):
+def __chat_settings__(chat_id, user_id):
     notes = sql.get_all_chat_notes(chat_id)
     return "There are `{}` notes in this chat.".format(len(notes))
 
-
-
 GET_HANDLER = CommandHandler("get", cmd_get, pass_args=True)
-HASH_GET_HANDLER = MessageHandler(Filters.regex(r"^#[^\s]+"), hash_get)
+HASH_GET_HANDLER = RegexHandler(r"^#[^\s]+", hash_get)
 
 SAVE_HANDLER = CommandHandler("save", save)
 DELETE_HANDLER = CommandHandler("clear", clear, pass_args=True)
