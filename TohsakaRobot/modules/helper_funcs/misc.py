@@ -1,3 +1,4 @@
+from math import ceil
 from typing import List, Dict
 
 from telegram import MAX_MESSAGE_LENGTH, InlineKeyboardButton, Bot, ParseMode, Update
@@ -31,13 +32,14 @@ def split_message(msg: str) -> List[str]:
             else:
                 result.append(small_msg)
                 small_msg = line
+        else:
             # Else statement at the end of the for loop, so append the leftover string.
             result.append(small_msg)
 
         return result
 
 
-def paginate_modules(_page_n: int, module_dict: Dict, prefix, chat=None) -> List:
+def paginate_modules(page_n: int, module_dict: Dict, prefix, chat=None) -> List:
     if not chat:
         modules = sorted(
             [EqInlineKeyboardButton(x.__mod_name__,

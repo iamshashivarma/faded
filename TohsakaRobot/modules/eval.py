@@ -1,21 +1,42 @@
-from contextlib import redirect_stdout
-from telegram import ParseMode
+import logging
+import sys
+from contextlib import contextmanager, redirect_stdout
+from telegram import Update, Bot, ParseMode
 from telegram.ext import run_async
 
-from telegram.ext import CommandHandler
+from telegram.ext import Updater, CommandHandler
 from telegram.error import TimedOut, NetworkError
 from telegram import ParseMode
+
+from TohsakaRobot.modules.disable import DisableAbleCommandHandler
 from telegram.ext.dispatcher import run_async
-from TohsakaRobot.modules.helper_funcs.chat_status import dev_user
+from TohsakaRobot.modules.helper_funcs.chat_status import bot_admin, can_promote, user_admin, can_pin, dev_user
 from TohsakaRobot import dispatcher, LOGGER
+
+from requests import get
 
 # Common imports for eval
 import sys
+import inspect
 import os
+import shutil
+import glob
+import math
 import textwrap
 import os
+import requests
+import json
+import gc
+import datetime
+import time
 import traceback
+import re
 import io
+import asyncio
+import random
+import subprocess
+import urllib
+import psutil
 
 namespaces = {}
 

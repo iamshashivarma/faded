@@ -350,7 +350,7 @@ def get_settings(bot: Bot, update: Update):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
     msg = update.effective_message  # type: Optional[Message]
-    msg.text.split(None, 1)
+    args = msg.text.split(None, 1)
 
     # ONLY send settings in PM
     if chat.type != chat.PRIVATE:
@@ -410,7 +410,7 @@ def migrate_chats(bot: Bot, update: Update):
 
 
 def main():
-    CommandHandler("test", test)
+    test_handler = CommandHandler("test", test)
     start_handler = CommandHandler("start", start, pass_args=True)
 
     help_handler = CommandHandler("help", get_help)

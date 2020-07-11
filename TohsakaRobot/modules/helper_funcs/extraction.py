@@ -4,7 +4,7 @@ from telegram import Message, MessageEntity
 from telegram.error import BadRequest
 
 from TohsakaRobot import LOGGER
-from TohsakaRobot.modules.users import getuser_id
+from TohsakaRobot.modules.users import get_user_id
 
 
 def id_from_reply(message):
@@ -47,7 +47,7 @@ def extract_user_and_text(message: Message, args: List[str]) -> (Optional[int], 
 
     elif len(args) >= 1 and args[0][0] == '@':
         user = args[0]
-        user_id = getuser_id(user)
+        user_id = get_user_id(user)
         if not user_id:
             message.reply_text("I don't have that user in my db. You'll be able to interact with them if "
                                "you reply to that person's message instead, or forward one of that user's messages.")

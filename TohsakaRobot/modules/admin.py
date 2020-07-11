@@ -6,7 +6,7 @@ from telegram import ParseMode
 from telegram.error import BadRequest
 from telegram.ext import CommandHandler, Filters
 from telegram.ext.dispatcher import run_async
-from telegram.utils.helpers import mention_html
+from telegram.utils.helpers import escape_markdown, mention_html
 
 from TohsakaRobot import dispatcher
 from TohsakaRobot.modules.disable import DisableAbleCommandHandler

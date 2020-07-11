@@ -2,8 +2,9 @@
 
 import requests as r
 from random import randint
+from time import sleep
 
-from telegram import Update, Bot
+from telegram import Message, Chat, Update, Bot
 from telegram.ext import run_async
 
 from TohsakaRobot import dispatcher, WALL_API

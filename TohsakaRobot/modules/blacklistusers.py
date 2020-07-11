@@ -1,6 +1,6 @@
 # Module to blacklist users and prevent them from using commands by @TheRealPhoenix
 
-from telegram import Bot, Update, ParseMode
+from telegram import Message, User, Bot, Update, ParseMode
 from telegram.ext import CommandHandler, run_async, Filters
 
 from TohsakaRobot import dispatcher, OWNER_ID
