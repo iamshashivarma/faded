@@ -40,24 +40,21 @@ SHRUGS = (
 )
 
 HUGS = (
-"⊂(・﹏・⊂)",
-"⊂(・ヮ・⊂)",
-"⊂(・▽・⊂)",
-"(っಠ‿ಠ)っ",
-"ʕっ•ᴥ•ʔっ",
-"（っ・∀・）っ",
-"(っ⇀⑃↼)っ",
-"(つ´∀｀)つ",
-"(.づσ▿σ)づ.",
-"⊂(´・ω・｀⊂)",
-"(づ￣ ³￣)づ",
-"(.づ◡﹏◡)づ.",
+    "⊂(・﹏・⊂)",
+    "⊂(・ヮ・⊂)",
+    "⊂(・▽・⊂)",
+    "(っಠ‿ಠ)っ",
+    "ʕっ•ᴥ•ʔっ",
+    "（っ・∀・）っ",
+    "(っ⇀⑃↼)っ",
+    "(つ´∀｀)つ",
+    "(.づσ▿σ)づ.",
+    "⊂(´・ω・｀⊂)",
+    "(づ￣ ³￣)づ",
+    "(.づ◡﹏◡)づ.",
 )
 
-TOSS = (
-"The coin landed on heads.",
-"The coin landed on tails."
-)
+TOSS = ("The coin landed on heads.", "The coin landed on tails.")
 
 REACTS = (
     "ʘ‿ʘ",
@@ -160,44 +157,110 @@ REACTS = (
     "(｡◕‿◕｡)",
 )
 
-normiefont = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-weebyfont = ['卂','乃','匚','刀','乇','下','厶','卄','工','丁','长','乚','从','𠘨','口','尸','㔿','尺','丂','丅','凵','リ','山','乂','丫','乙']
+normiefont = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+]
+weebyfont = [
+    "卂",
+    "乃",
+    "匚",
+    "刀",
+    "乇",
+    "下",
+    "厶",
+    "卄",
+    "工",
+    "丁",
+    "长",
+    "乚",
+    "从",
+    "𠘨",
+    "口",
+    "尸",
+    "㔿",
+    "尺",
+    "丂",
+    "丅",
+    "凵",
+    "リ",
+    "山",
+    "乂",
+    "丫",
+    "乙",
+]
 
 
 @run_async
 def shrug(bot: Bot, update: Update):
-    # reply to correct message 
-    reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
+    # reply to correct message
+    reply_text = (
+        update.effective_message.reply_to_message.reply_text
+        if update.effective_message.reply_to_message
+        else update.effective_message.reply_text
+    )
     reply_text = reply_text(random.choice(SHRUGS))
 
 
 @run_async
 def hug(bot: Bot, update: Update):
-    # reply to correct message 
-    reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
+    # reply to correct message
+    reply_text = (
+        update.effective_message.reply_to_message.reply_text
+        if update.effective_message.reply_to_message
+        else update.effective_message.reply_text
+    )
     reply_text = reply_text(random.choice(HUGS))
-    
-    
+
+
 @run_async
 def toss(bot: Bot, update: Update):
- 	update.effective_message.reply_text(random.choice(TOSS))
+    update.effective_message.reply_text(random.choice(TOSS))
 
 
 @run_async
 def react(bot: Bot, update: Update):
-	 # reply to correct message 
-    reply_text = update.effective_message.reply_to_message.reply_text if update.effective_message.reply_to_message else update.effective_message.reply_text
+    # reply to correct message
+    reply_text = (
+        update.effective_message.reply_to_message.reply_text
+        if update.effective_message.reply_to_message
+        else update.effective_message.reply_text
+    )
     reply_text = reply_text(random.choice(REACTS))
-    
+
 
 @run_async
 def shout(bot: Bot, update: Update, args):
     msg = "```"
     text = " ".join(args)
     result = []
-    result.append(' '.join([s for s in text]))
+    result.append(" ".join([s for s in text]))
     for pos, symbol in enumerate(text[1:]):
-        result.append(symbol + ' ' + '  ' * pos + symbol)
+        result.append(symbol + " " + "  " * pos + symbol)
     result = list("\n".join(result))
     result[0] = text[0]
     result = "".join(result)
@@ -214,22 +277,46 @@ def pat(bot: Bot, update: Update):
         msg = msg.split(" ", 1)[1]
     except IndexError:
         msg = ""
-    msg_id = update.effective_message.reply_to_message.message_id if update.effective_message.reply_to_message else update.effective_message.message_id
+    msg_id = (
+        update.effective_message.reply_to_message.message_id
+        if update.effective_message.reply_to_message
+        else update.effective_message.message_id
+    )
     pats = []
-    pats = json.loads(urllib.request.urlopen(urllib.request.Request(
-    'http://headp.at/js/pats.json',
-    headers={'User-Agent': 'Mozilla/5.0 (X11; U; Linux i686) '
-         'Gecko/20071127 Firefox/2.0.0.11'}
-    )).read().decode('utf-8'))
+    pats = json.loads(
+        urllib.request.urlopen(
+            urllib.request.Request(
+                "http://headp.at/js/pats.json",
+                headers={
+                    "User-Agent": "Mozilla/5.0 (X11; U; Linux i686) "
+                    "Gecko/20071127 Firefox/2.0.0.11"
+                },
+            )
+        )
+        .read()
+        .decode("utf-8")
+    )
     if "@" in msg and len(msg) > 5:
-        bot.send_photo(chat_id, f'https://headp.at/pats/{urllib.parse.quote(random.choice(pats))}', caption=msg)
+        bot.send_photo(
+            chat_id,
+            f"https://headp.at/pats/{urllib.parse.quote(random.choice(pats))}",
+            caption=msg,
+        )
     else:
-        bot.send_photo(chat_id, f'https://headp.at/pats/{urllib.parse.quote(random.choice(pats))}', reply_to_message_id=msg_id)
+        bot.send_photo(
+            chat_id,
+            f"https://headp.at/pats/{urllib.parse.quote(random.choice(pats))}",
+            reply_to_message_id=msg_id,
+        )
 
 
 @run_async
 def wiki(bot: Bot, update: Update):
-    msg = update.effective_message.reply_to_message if update.effective_message.reply_to_message else update.effective_message
+    msg = (
+        update.effective_message.reply_to_message
+        if update.effective_message.reply_to_message
+        else update.effective_message
+    )
     res = ""
     if msg == update.effective_message:
         search = msg.text.split(" ", maxsplit=1)[1]
@@ -238,21 +325,31 @@ def wiki(bot: Bot, update: Update):
     try:
         res = wikipedia.summary(search)
     except DisambiguationError as e:
-        update.message.reply_text("Disambiguated pages found! Adjust your query accordingly.\n<i>{}</i>".format(e),
-        parse_mode=ParseMode.HTML)
+        update.message.reply_text(
+            "Disambiguated pages found! Adjust your query accordingly.\n<i>{}</i>".format(
+                e
+            ),
+            parse_mode=ParseMode.HTML,
+        )
     except PageError as e:
-        update.message.reply_text("<code>{}</code>".format(e), parse_mode=ParseMode.HTML)
+        update.message.reply_text(
+            "<code>{}</code>".format(e), parse_mode=ParseMode.HTML
+        )
     if res:
         result = f"<b>{search}</b>\n\n"
         result += f"<i>{res}</i>\n"
         result += f"""<a href="https://en.wikipedia.org/wiki/{search.replace(" ", "%20")}">Read more...</a>"""
         if len(result) > 4000:
-            with open("result.txt", 'w') as f:
+            with open("result.txt", "w") as f:
                 f.write(f"{result}\n\nUwU OwO OmO UmU")
-            with open("result.txt", 'rb') as f:
-                bot.send_document(document=f, filename=f.name,
-                    reply_to_message_id=update.message.message_id, chat_id=update.effective_chat.id,
-                    parse_mode=ParseMode.HTML)
+            with open("result.txt", "rb") as f:
+                bot.send_document(
+                    document=f,
+                    filename=f.name,
+                    reply_to_message_id=update.message.message_id,
+                    chat_id=update.effective_chat.id,
+                    parse_mode=ParseMode.HTML,
+                )
         else:
             update.message.reply_text(result, parse_mode=ParseMode.HTML)
 
@@ -281,7 +378,7 @@ def weebify(bot: Bot, update: Update, args):
     else:
         msg.reply_text("Enter some text to weebify or reply to someone's message!")
         return
-        
+
     for normiecharacter in string:
         if normiecharacter in normiefont:
             weebycharacter = weebyfont[normiefont.index(normiecharacter)]
@@ -291,7 +388,6 @@ def weebify(bot: Bot, update: Update, args):
         msg.reply_to_message.reply_text(string)
     else:
         msg.reply_text(string)
-
 
 
 __help__ = """

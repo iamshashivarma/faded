@@ -11,7 +11,9 @@ from TohsakaRobot import dispatcher
 def define(bot: Bot, update: Update, args):
     msg = update.effective_message
     word = " ".join(args)
-    res = requests.get(f"https://googledictionaryapi.eu-gb.mybluemix.net/?define={word}")
+    res = requests.get(
+        f"https://googledictionaryapi.eu-gb.mybluemix.net/?define={word}"
+    )
     if res.status_code == 200:
         info = res.json()[0].get("meaning")
         if info:
@@ -23,14 +25,11 @@ def define(bot: Bot, update: Update, args):
                     meaning += f"• <i>{defs}</i>\n"
             msg.reply_text(meaning, parse_mode=ParseMode.HTML)
         else:
-            return 
+            return
     else:
         msg.reply_text("No results found!")
-        
-        
 
 
-        
 DEFINE_HANDLER = CommandHandler("define", define, pass_args=True)
 
 dispatcher.add_handler(DEFINE_HANDLER)

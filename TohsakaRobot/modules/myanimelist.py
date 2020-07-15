@@ -3,8 +3,17 @@
 from jikanpy import Jikan
 from jikanpy.exceptions import APIException
 
-from telegram import Message, Chat, User, ParseMode, Update, Bot, InlineKeyboardMarkup, InlineKeyboardButton
-from telegram.ext import CommandHandler,  run_async
+from telegram import (
+    Message,
+    Chat,
+    User,
+    ParseMode,
+    Update,
+    Bot,
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+)
+from telegram.ext import CommandHandler, run_async
 
 from TohsakaRobot import dispatcher
 
@@ -22,7 +31,7 @@ def anime(bot: Bot, update: Update, args):
         msg.reply_text("Error connecting to the API. Please try again!")
         return ""
     try:
-        res = res.get("results")[0].get("mal_id") # Grab first result
+        res = res.get("results")[0].get("mal_id")  # Grab first result
     except APIException:
         msg.reply_text("Error connecting to the API. Please try again!")
         return ""
@@ -71,17 +80,18 @@ def anime(bot: Bot, update: Update, args):
     rep += f"<i>{synopsis}</i>\n"
     if trailer:
         keyb = [
-            [InlineKeyboardButton("More Information", url=url),
-           InlineKeyboardButton("Trailer", url=trailer)]
+            [
+                InlineKeyboardButton("More Information", url=url),
+                InlineKeyboardButton("Trailer", url=trailer),
+            ]
         ]
     else:
-        keyb = [
-             [InlineKeyboardButton("More Information", url=url)]
-         ]
-    
-    
-    msg.reply_text(rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb))
-    
+        keyb = [[InlineKeyboardButton("More Information", url=url)]]
+
+    msg.reply_text(
+        rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb)
+    )
+
 
 @run_async
 def character(bot: Bot, update: Update, args):
@@ -110,13 +120,13 @@ def character(bot: Bot, update: Update, args):
         rep = f"<b>{name} ({kanji})</b>\n\n"
         rep += f"<a href='{image}'>\u200c</a>"
         rep += f"<i>{about}</i>\n"
-        keyb = [
-            [InlineKeyboardButton("More Information", url=url)]
-        ]
-        
-        msg.reply_text(rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb))
-        
-        
+        keyb = [[InlineKeyboardButton("More Information", url=url)]]
+
+        msg.reply_text(
+            rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb)
+        )
+
+
 @run_async
 def upcoming(bot: Bot, update: Update):
     msg = update.effective_message
@@ -130,8 +140,8 @@ def upcoming(bot: Bot, update: Update):
         if len(rep) > 2000:
             break
     msg.reply_text(rep, parse_mode=ParseMode.HTML)
-    
-    
+
+
 @run_async
 def manga(bot: Bot, update: Update, args):
     msg = update.effective_message
@@ -173,15 +183,13 @@ def manga(bot: Bot, update: Update, args):
         rep += f"<b>Chapters:</b> <code>{chapters}</code>\n\n"
         rep += f"<a href='{image}'>\u200c</a>"
         rep += f"<i>{synopsis}</i>"
-        keyb = [
-            [InlineKeyboardButton("More Information", url=url)]
-        ]
-        
-        msg.reply_text(rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb))
-        
+        keyb = [[InlineKeyboardButton("More Information", url=url)]]
 
-        
-        
+        msg.reply_text(
+            rep, parse_mode=ParseMode.HTML, reply_markup=InlineKeyboardMarkup(keyb)
+        )
+
+
 ANIME_HANDLER = CommandHandler("sanime", anime, pass_args=True)
 CHARACTER_HANDLER = CommandHandler("scharacter", character, pass_args=True)
 UPCOMING_HANDLER = CommandHandler("upcoming", upcoming)

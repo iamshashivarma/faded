@@ -18,9 +18,9 @@ def bl_user(bot: Bot, update: Update, args):
         reason = " ".join(args[1:])
     sql.blacklist_user(user_id, reason)
     update.effective_message.reply_text("User has been blacklisted from using me!")
-    
 
-@run_async 
+
+@run_async
 def bl_users(bot: Bot, update: Update):
     rep = "<b>Blacklisted Users</b>\n"
     for x in sql.BLACKLIST_USERS:
@@ -33,8 +33,8 @@ def bl_users(bot: Bot, update: Update):
         else:
             rep += f"• <a href='tg://user?id={x}'>{name}</a>\n"
     update.effective_message.reply_text(rep, parse_mode=ParseMode.HTML)
-    
-    
+
+
 @run_async
 def unbl_user(bot: Bot, update: Update, args):
     rep = update.effective_message
@@ -48,11 +48,11 @@ def unbl_user(bot: Bot, update: Update, args):
         rep.reply_text("User removed from blacklist!")
     else:
         rep.reply_text("User isn't even blacklisted!")
-        
-        
+
+
 def __user_info__(user_id):
     is_blacklisted = sql.is_user_blacklisted(user_id)
-    
+
     text = "Blacklisted: <b>{}</b>"
     if is_blacklisted:
         text = text.format("Yes")
@@ -62,10 +62,14 @@ def __user_info__(user_id):
     else:
         text = text.format("No")
     return text
-           
-    
-BL_HANDLER = CommandHandler("bluser", bl_user, pass_args=True, filters=Filters.user(OWNER_ID))
-UNBL_HANDLER = CommandHandler("unbluser", unbl_user, pass_args=True, filters=Filters.user(OWNER_ID))
+
+
+BL_HANDLER = CommandHandler(
+    "bluser", bl_user, pass_args=True, filters=Filters.user(OWNER_ID)
+)
+UNBL_HANDLER = CommandHandler(
+    "unbluser", unbl_user, pass_args=True, filters=Filters.user(OWNER_ID)
+)
 BLUSERS_HANDLER = CommandHandler("blusers", bl_users, filters=Filters.user(OWNER_ID))
 
 dispatcher.add_handler(BL_HANDLER)
