@@ -192,13 +192,11 @@ def anime(bot: Bot, update: Update):
        if trailer:
         buttons = [
             [InlineKeyboardButton("More Info", url=info),
-             InlineKeyboardButton("Trailer 🎬", url=trailer)],
-            [InlineKeyboardButton("Add to Favorites", callback_data=f'fav_({anime_id})')]
+             InlineKeyboardButton("Trailer 🎬", url=trailer)]
           ]
        else:
         buttons = [
-             [InlineKeyboardButton("More Info", url=info)], 
-             [InlineKeyboardButton("Add to Favorites", callback_data=f'fav_({anime_id})')]
+             [InlineKeyboardButton("More Info", url=info)]
           ]
        if image:
            try:
