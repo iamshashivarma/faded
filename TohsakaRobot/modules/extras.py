@@ -429,8 +429,7 @@ Get information about anime, manga or characters with the help of this module! A
 *Available commands:*
  - /anime <anime>: returns information about the anime.
  - /character <character>: returns information about the character.
- - /smanga <manga>: returns information about the manga.
- - /upcoming: returns a list of new anime in the upcoming seasons.
+ - /manga <manga>: returns information about the manga.
 ────────────────────────────────────── 
 *BACKUPS*
 
