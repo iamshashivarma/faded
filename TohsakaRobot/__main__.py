@@ -43,9 +43,7 @@ I'm a group management bot with a few fun extras ;)
 
 The support chat is at @tohsakas
 
-Source code repository: [TheRealPhoenixBot](https://github.com/rsktg/TheRealPhoenixBot)
-My repository: [TheRealTohsakaBot](https://github.com/Dank-del/TheRealTohskaBot)
-
+My repository: [TheRealTohsakaBot](https://github.com/Dank-del/Rin)
 
 You can find the list of available commands with /help
 """
