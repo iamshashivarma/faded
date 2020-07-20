@@ -43,7 +43,7 @@ I'm a group management bot with a few fun extras ;)
 
 The support chat is at @tohsakas
 
-My repository: [TheRealTohsakaBot](https://github.com/Dank-del/Rin)
+My repository: [Rin](https://github.com/Dank-del/Rin)
 
 You can find the list of available commands with /help
 """
