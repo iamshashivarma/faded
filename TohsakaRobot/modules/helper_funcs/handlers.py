@@ -2,7 +2,7 @@ import telegram.ext as tg
 from telegram import Update
 import TohsakaRobot.modules.sql.blacklistusers_sql as sql
 
-CMD_STARTERS = ("/", "!")
+CMD_STARTERS = ("/", "!", "Rin ", "rin ")
 
 
 class CustomCommandHandler(tg.CommandHandler):
