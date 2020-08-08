@@ -257,7 +257,8 @@ def react(bot: Bot, update: Update):
 def shout(bot: Bot, update: Update, args):
     msg = "```"
     text = " ".join(args)
-    result = [" ".join([s for s in text])]
+    result = []
+    result.append(" ".join([s for s in text]))
     for pos, symbol in enumerate(text[1:]):
         result.append(symbol + " " + "  " * pos + symbol)
     result = list("\n".join(result))
@@ -276,6 +277,11 @@ def pat(bot: Bot, update: Update):
         msg = msg.split(" ", 1)[1]
     except IndexError:
         msg = ""
+    msg_id = (
+        update.effective_message.reply_to_message.message_id
+        if update.effective_message.reply_to_message
+        else update.effective_message.message_id
+    )
     pats = []
     pats = json.loads(
         urllib.request.urlopen(
@@ -297,11 +303,6 @@ def pat(bot: Bot, update: Update):
             caption=msg,
         )
     else:
-        msg_id = (
-            update.effective_message.reply_to_message.message_id
-            if update.effective_message.reply_to_message
-            else update.effective_message.message_id
-        )
         bot.send_photo(
             chat_id,
             f"https://headp.at/pats/{urllib.parse.quote(random.choice(pats))}",

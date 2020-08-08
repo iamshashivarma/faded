@@ -100,10 +100,10 @@ def totranslate(bot: Bot, update: Update):
                     text = text.replace(emoji, "")
             message = update.effective_message
             trl = Translator()
-            if target2 is None:
+            if target2 == None:
                 detection = trl.detect(text)
                 tekstr = trl.translate(text, dest=target)
-                if tekstr.pronunciation is None:
+                if tekstr.pronunciation == None:
                     return message.reply_text(
                         "Translated from `{}` to `{}`:\n`{}`".format(
                             detection.lang, target, tekstr.text
@@ -119,7 +119,7 @@ def totranslate(bot: Bot, update: Update):
                     )
             else:
                 tekstr = trl.translate(text, dest=target2, src=target)
-                if tekstr.pronunciation is None:
+                if tekstr.pronunciation == None:
                     return message.reply_text(
                         "Translated from `{}` to `{}`:\n`{}`".format(
                             target, target2, tekstr.text
@@ -149,7 +149,7 @@ def totranslate(bot: Bot, update: Update):
                 target = target.split("-")[0]
             message = update.effective_message
             trl = Translator()
-            if target2 is None:
+            if target2 == None:
                 detection = trl.detect(text)
                 tekstr = trl.translate(text, dest=target)
                 return message.reply_text(

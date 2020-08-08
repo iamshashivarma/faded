@@ -308,7 +308,11 @@ def left_member(bot: Bot, update: Update):
                     fullname = first_name
                 count = chat.get_members_count()
                 mention = mention_html(left_mem.id, first_name)
-                username = "@" + escape(left_mem.username) if left_mem.username else mention
+                if left_mem.username:
+                    username = "@" + escape(left_mem.username)
+                else:
+                    username = mention
+
                 valid_format = escape_invalid_curly_brackets(
                     cust_goodbye, VALID_WELCOME_FORMATTERS
                 )
@@ -339,7 +343,7 @@ def left_member(bot: Bot, update: Update):
 def welcome(bot: Bot, update: Update, args: List[str]):
     chat = update.effective_chat  # type: Optional[Chat]
     # if no args, show current replies.
-    if not args or args[0].lower() == "noformat":
+    if len(args) == 0 or args[0].lower() == "noformat":
         noformat = args and args[0].lower() == "noformat"
         pref, welcome_m, welcome_type = sql.get_welc_pref(chat.id)
         update.effective_message.reply_text(
@@ -392,7 +396,7 @@ def welcome(bot: Bot, update: Update, args: List[str]):
 def goodbye(bot: Bot, update: Update, args: List[str]):
     chat = update.effective_chat  # type: Optional[Chat]
 
-    if not args or args[0] == "noformat":
+    if len(args) == 0 or args[0] == "noformat":
         noformat = args and args[0] == "noformat"
         pref, goodbye_m, goodbye_type = sql.get_gdbye_pref(chat.id)
         update.effective_message.reply_text(
