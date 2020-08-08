@@ -39,7 +39,10 @@ def bl_users(bot: Bot, update: Update):
 def unbl_user(bot: Bot, update: Update, args):
     rep = update.effective_message
     msg = update.effective_message.reply_to_message
-    user_id = str(msg.from_user.id) if msg else args[0]
+    if msg:
+        user_id = str(msg.from_user.id)
+    else:
+        user_id = args[0]
     if sql.is_user_blacklisted(int(user_id)):
         sql.unblacklist_user(user_id)
         rep.reply_text("User removed from blacklist!")

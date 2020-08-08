@@ -102,7 +102,7 @@ def new_fed(bot: Bot, update: Update):
         update.effective_message.reply_text("Please run this command in my PM only!")
         return
     fednam = message.text.split(None, 1)[1]
-    if fednam != "":
+    if not fednam == "":
         fed_id = str(uuid.uuid4())
         fed_name = fednam
         LOGGER.info(fed_id)
@@ -216,12 +216,16 @@ def join_fed(bot: Bot, update: Update, args: List[str]):
     administrators = chat.get_administrators()
     fed_id = sql.get_fed_id(chat.id)
 
-    if user.id not in SUDO_USERS:
+    if user.id in SUDO_USERS:
+        pass
+    else:
         for admin in administrators:
             status = admin.status
             if status == "creator":
                 print(admin)
-                if str(admin.user.id) != str(user.id):
+                if str(admin.user.id) == str(user.id):
+                    pass
+                else:
                     update.effective_message.reply_text(
                         "Only the group creator can do it!"
                     )
@@ -282,12 +286,14 @@ def user_join_fed(bot: Bot, update: Update, args: List[str]):
             user = bot.get_chat(user_id)
         elif not msg.reply_to_message and not args:
             user = msg.from_user
-        elif (
-            not msg.reply_to_message
-            and len(args) >= 1
-            and not args[0].startswith("@")
-            and not args[0].isdigit()
-            and not msg.parse_entities([MessageEntity.TEXT_MENTION])
+        elif not msg.reply_to_message and (
+            not args
+            or (
+                len(args) >= 1
+                and not args[0].startswith("@")
+                and not args[0].isdigit()
+                and not msg.parse_entities([MessageEntity.TEXT_MENTION])
+            )
         ):
             msg.reply_text("I cannot extract users from this message.")
             return
@@ -335,12 +341,14 @@ def user_demote_fed(bot: Bot, update: Update, args: List[str]):
         elif not msg.reply_to_message and not args:
             user = msg.from_user
 
-        elif (
-            not msg.reply_to_message
-            and len(args) >= 1
-            and not args[0].startswith("@")
-            and not args[0].isdigit()
-            and not msg.parse_entities([MessageEntity.TEXT_MENTION])
+        elif not msg.reply_to_message and (
+            not args
+            or (
+                len(args) >= 1
+                and not args[0].startswith("@")
+                and not args[0].isdigit()
+                and not msg.parse_entities([MessageEntity.TEXT_MENTION])
+            )
         ):
             msg.reply_text("I cannot extract users from this message.")
             return
@@ -549,7 +557,9 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
             try:
                 bot.kick_chat_member(chat, user_id)
             except BadRequest as excp:
-                if excp.message not in FBAN_ERRORS:
+                if excp.message in FBAN_ERRORS:
+                    pass
+                else:
                     LOGGER.warning(
                         "Could not fban in {} because: {}".format(chat, excp.message)
                     )
@@ -707,7 +717,9 @@ def unfban(bot: Bot, update: Update, args: List[str]):
 				"""
 
         except BadRequest as excp:
-            if excp.message not in UNFBAN_ERRORS:
+            if excp.message in UNFBAN_ERRORS:
+                pass
+            else:
                 LOGGER.warning(
                     "Cannot remove fban in {} because: {}".format(chat, excp.message)
                 )
@@ -1293,7 +1305,10 @@ def is_user_fed_admin(fed_id, user_id):
         return True
     if fed_admins == False:
         return False
-    return int(user_id) in fed_admins
+    if int(user_id) in fed_admins:
+        return True
+    else:
+        return False
 
 
 def is_user_fed_owner(fed_id, user_id):
@@ -1301,10 +1316,13 @@ def is_user_fed_owner(fed_id, user_id):
     if getsql == False:
         return False
     getfedowner = eval(getsql["fusers"])
-    if getfedowner is None or getfedowner == False:
+    if getfedowner == None or getfedowner == False:
         return False
     getfedowner = getfedowner["owner"]
-    return str(user_id) == getfedowner
+    if str(user_id) == getfedowner:
+        return True
+    else:
+        return False
 
 
 @run_async
@@ -1359,14 +1377,18 @@ def __user_info__(user_id, chat_id):
 # Temporary data
 def put_chat(chat_id, value, chat_data):
     # print(chat_data)
-    status = False if value == False else True
+    if value == False:
+        status = False
+    else:
+        status = True
     chat_data[chat_id] = {"federation": {"status": status, "value": value}}
 
 
 def get_chat(chat_id, chat_data):
     # print(chat_data)
     try:
-        return chat_data[chat_id]["federation"]
+        value = chat_data[chat_id]["federation"]
+        return value
     except KeyError:
         return {"status": False, "value": False}
 
