@@ -502,7 +502,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
         return
 
     if user_id == OWNER_ID:
-        message.reply_text("I'm not gonna ban my owner!")
+        message.reply_text("I'm not gonna ban my Owner!")
         return
 
     if int(user_id) in SUDO_USERS:
@@ -607,7 +607,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
     )
     if not x:
         message.reply_text(
-            "Failed to ban from the federation! If this problem persists, reach out to us @tohsakas."
+            "Failed to ban from the federation! If this problem persists, reach our [Support Group](https://t.me/Bot_Support_xD) ."
         )
         return
 
