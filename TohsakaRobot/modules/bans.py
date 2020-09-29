@@ -48,11 +48,11 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
             raise
 
     if user_id == int(OWNER_ID):
-        message.reply_text("I'm not gonna ban my owner, want me to ban you instead?!")
+        message.reply_text("I'm not gonna ban my Owner, want me to ban you instead?!")
         return ""
 
     elif user_id == bot.id:
-        message.reply_text("I'm not gonna BAN myself, are you crazy?")
+        message.reply_text("I'm not gonna BAN myself, are you crazy? Lmao.")
         return ""
 
     elif is_user_ban_protected(chat, user_id, member):
@@ -82,7 +82,7 @@ def ban(bot: Bot, update: Update, args: List[str]) -> str:
     except BadRequest as excp:
         if excp.message == "Reply message not found":
             # Do not reply
-            message.reply_text("Banned!", quote=False)
+            message.reply_text("Another One Bites The Dust.. Banned!", quote=False)
             return log
         else:
             LOGGER.warning(update)
@@ -192,7 +192,7 @@ def temp_ban(bot: Bot, update: Update, args: List[str]) -> str:
         return ""
 
     if user_id == bot.id:
-        message.reply_text("I'm not gonna BAN myself, are you crazy?!")
+        message.reply_text("I'm not gonna BAN myself, are you crazy?! Lmao.")
         return ""
 
     if not reason:
@@ -343,7 +343,7 @@ def banme(bot: Bot, update: Update):
         bot.kick_chat_member(chat_id, user_id)
         res = "Get outta here!"
     except:
-        res = "Huh... something went wrong. Report this @tohsakas"
+        res = "Huh... something went wrong. Report this at [My Support Group](https://t.me/Bot_Support_xD) ."
     update.effective_message.reply_text(res)
 
 
