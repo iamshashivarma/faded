@@ -38,14 +38,9 @@ from TohsakaRobot.modules.helper_funcs.chat_status import is_user_admin
 from TohsakaRobot.modules.helper_funcs.misc import paginate_modules
 
 PM_START_TEXT = """
-Hi {}, my name is {}!
-I'm a group management bot with a few fun extras ;)
+Hey *{}* ! My name is *{}* . I'm here to help you manage your groups! Hit /help to find out more about how to use my full potential .
 
-The support chat is at @tohsakas
-
-My repository: [Rin](https://github.com/EagleUnion/Rin)
-
-You can find the list of available commands with /help
+Join my [Support Group](https://t.me/Bot_Support_xD) for support or if I go offline .
 """
 
 HELP_STRINGS = """
@@ -66,9 +61,9 @@ And the following:
     "" if not ALLOW_EXCL else "\nAll commands can either be used with / or !.\n",
 )
 
-RIN_IMG = "https://telegra.ph/file/2dc1c31660b79b7e3ce90.jpg"
+RIN_IMG = "https://telegra.ph/MissLuna-09-29.jpg"
 
-DONATE_STRING = """I'm free for everyone uwu""".format(dispatcher.bot.first_name)
+DONATE_STRING = """There's appear a problem with the command you're trying to use. This can't be done at this moment. Please try again later.""".format(dispatcher.bot.first_name)
 
 IMPORTED = {}
 MIGRATEABLE = []
@@ -172,7 +167,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                     [
                         [
                             InlineKeyboardButton(
-                                text="Add Rin to your group",
+                                text="Add Luna To Your Groups!",
                                 url="t.me/{}?startgroup=true".format(bot.username),
                             )
                         ]
@@ -180,7 +175,7 @@ def start(bot: Bot, update: Update, args: List[str]):
                 ),
             )
     else:
-        update.effective_message.reply_text("Yo, why'd you summon me?")
+        update.effective_message.reply_text("Heya :) PM me if you have any questions on how to use me!")
 
 
 # for test purposes
